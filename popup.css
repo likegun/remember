@@ -1,0 +1,67 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  width: 300px;
+}
+
+div#btnBox {
+  width: 100%;
+  text-align: center;
+}
+
+button {
+  border-radius: 5px;
+  outline: none;
+  border: none;
+}
+
+button#save, button#go {
+  width: 45%;
+  margin-left: 2.5%;
+  height: 25px;
+  font-size: 18px;
+  background: rgb(125, 191, 224);
+  color: white;
+}
+
+button#unsave {
+  background: red;
+  color: white;
+  width: 20px;
+}
+
+ul li {
+  height: 20px;
+  margin: 4px 4px;
+}
+ul li a {
+  width: 272px;
+  height: 20px;
+  font-size: 16px;
+  line-height: 20px;
+  overflow: hidden;
+  display: inline-block;
+}
+
+button#unsave {
+  vertical-align: top;
+  background: red;
+  color: white;
+  width: 20px;
+  height: 20px;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+
+}
+
+a:visited {
+  color: blue;
+}
