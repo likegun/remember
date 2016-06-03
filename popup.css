@@ -28,9 +28,19 @@ button#save, button#go {
 }
 
 button#unsave {
+  vertical-align: top;
   background: red;
   color: white;
   width: 20px;
+  height: 20px;
+}
+
+button#revoke {
+  vertical-align: top;
+  background: green;
+  color: white;
+  width: 20px;
+  height: 20px;
 }
 
 ul li {
@@ -44,14 +54,6 @@ ul li a {
   line-height: 20px;
   overflow: hidden;
   display: inline-block;
-}
-
-button#unsave {
-  vertical-align: top;
-  background: red;
-  color: white;
-  width: 20px;
-  height: 20px;
 }
 
 a {
