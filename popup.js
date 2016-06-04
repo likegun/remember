@@ -6,18 +6,6 @@
   var background = chrome.extension.getBackgroundPage();
   var unsaveArr = [];
 
-  var getStorageWebsites = () => {
-    return new Promise((resolve, reject) => {
-      chrome.storage.sync.get('websites', (ret) => resolve(ret.websites || {}));
-    });
-  };
-
-  var setStorageWebsites = (websites) => {
-    return new Promise((resolve, reject) => {
-      chrome.storage.sync.set({websites}, () => (resolve()));
-    });
-  };
-
   var tabsSelect = (condition) => {
     return new Promise((resolve, reject) => {
       chrome.tabs.query(condition || null, (tabs) => resolve(tabs));
@@ -60,10 +48,9 @@
   var unsave = (event) => {
     var unsaveBtn = event.currentTarget;
     unsaveArr.push(unsaveBtn.website);
-    unsaveBtn.innerHTML = 'Bak';
     unsaveBtn.id = 'revoke';
-    unsaveBtn.parentNode.childNodes[0].style.color = 'grey';
-    unsaveBtn.parentNode.childNodes[0].style['text-decoration'] = 'line-through';
+    unsaveBtn.className = 'undo';
+    unsaveBtn.parentNode.childNodes[0].className = 'delete';
     unsaveBtn.removeEventListener('click', unsave);
     unsaveBtn.addEventListener('click', revoke);
   };
@@ -72,10 +59,9 @@
     var revokeBtn = event.currentTarget;
     var revokeUrl = revokeBtn.website;
     unsaveArr = unsaveArr.filter((url) => url !== revokeUrl);
-    revokeBtn.innerHTML = 'Del';
     revokeBtn.id = 'unsave';
-    revokeBtn.parentNode.childNodes[0].style.color = 'blue';
-    revokeBtn.parentNode.childNodes[0].style['text-decoration'] = 'none';
+    revokeBtn.className = 'delete';
+    revokeBtn.parentNode.childNodes[0].className = 'normal';
     revokeBtn.removeEventListener('click', revoke);
     revokeBtn.addEventListener('click', unsave);
   };
@@ -100,12 +86,13 @@
           a.href = url;
           a.innerHTML = websites[url].title;
           a.target = '_blank';
+          a.className = 'normal';
           li.appendChild(a);
           let unsaveBtn = document.createElement('button');
           unsaveBtn.type = 'button';
           unsaveBtn.id = 'unsave';
-          unsaveBtn.innerHTML = 'Del';
           unsaveBtn.website = url;
+          unsaveBtn.className = 'delete';
           unsaveBtn.addEventListener('click', unsave);
           li.appendChild(unsaveBtn);
           websitesUl.appendChild(li);
@@ -114,11 +101,15 @@
   };
 
   document.addEventListener('DOMContentLoaded', function () {
+    //绑定按钮事件
     saveBtn.addEventListener('click', save);
     goBtn.addEventListener('click', go);
+
+    //退出browser action硬删除记录
     window.addEventListener('unload', function() {
       background.unsave(unsaveArr);
     });
+
     showLatestWebsites();
   });
 })();

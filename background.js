@@ -1,15 +1,10 @@
 (function() {
-  var getStorageWebsites = () => {
-    return new Promise((resolve, reject) => {
-      chrome.storage.sync.get('websites', (ret) => resolve(ret.websites || {}));
-    });
-  };
-
-  var setStorageWebsites = (websites) => {
-    return new Promise((resolve, reject) => {
-      chrome.storage.sync.set({websites}, () => (resolve()));
-    });
-  };
+  document.addEventListener('DOMContentLoaded', () => {
+    var libScript = document.createElement('script');
+    libScript.type = 'text/javascript';
+    libScript.src = './lib.js';
+    document.body.appendChild(libScript);
+  });
 
   window.unsave = (unsaveArr) => {
     getStorageWebsites()

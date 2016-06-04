@@ -1,69 +1,110 @@
 * {
-  padding: 0;
-  margin: 0;
+  margin: 0px;
+  padding: 0px;
+}
+
+html {
+  width: 300px;
+  height: 300px;
 }
 
 body {
-  width: 300px;
-}
-
-div#btnBox {
   width: 100%;
-  text-align: center;
+  height: 100%;
 }
 
-button {
-  border-radius: 5px;
+.container {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(243, 244, 245);
+}
+
+.buttonBox {
+  width: 100%;
+  height: 20%;
+  background-color: rgb(31, 49 ,70);
+  box-shadow: 0px 5px 25px #000;
+  border-radius: 3px;
+}
+
+.buttonBox button {
+  margin: 15px 22.5px;
   outline: none;
+  background-color: rgb(255, 59, 111);
+  width: 35%;
+  height: 50%;
+  border: none;
+  border-radius: 20px;
+  font-size: 16px;
+  font-weight: 100;
+  color: #FFF;
+
+}
+
+.rememberBox {
+  width: 100%;
+  height: 215px;
+}
+
+.rememberBox p {
+  font-size: 20px;
+  font-weight: bolder;
+  color: rgb(11, 6, 13);
+}
+
+.rememberBox ul {
+  width: 90%;
+  height: 100%;
+  margin: 20px 5% 0px 5%;
+  list-style: none;
+  overflow: auto;
+}
+
+.rememberBox ul li {
+  width: 100%;
+  height: 10%;
+  background: #FFF;
+  border-radius: 5px;
+  margin-top: 5px;
+}
+
+.rememberBox ul li a {
+  display: inline-block;
+  font-size: 14px;
+  overflow: hidden;
+  width: 80%;
+  margin: 0px 5%;
+  height: 24px;
+  line-height: 24px;
+  -webkit-transition: color 0.5s;
+}
+
+.rememberBox ul li button {
+  background-color: #FFF;
+  vertical-align: top;
+  width: 10%;
+  height: 20px;
+  margin: 2px 0px;
+  outline: none;
+  background-repeat: no-repeat;
+  background-size: contain;
   border: none;
 }
 
-button#save, button#go {
-  width: 45%;
-  margin-left: 2.5%;
-  height: 25px;
-  font-size: 18px;
-  background: rgb(125, 191, 224);
-  color: white;
+a.delete {
+  text-decoration: line-through;
+  color: rgb(228, 32, 91)
 }
 
-button#unsave {
-  vertical-align: top;
-  background: red;
-  color: white;
-  width: 20px;
-  height: 20px;
-}
-
-button#revoke {
-  vertical-align: top;
-  background: green;
-  color: white;
-  width: 20px;
-  height: 20px;
-}
-
-ul li {
-  height: 20px;
-  margin: 4px 4px;
-}
-ul li a {
-  width: 272px;
-  height: 20px;
-  font-size: 16px;
-  line-height: 20px;
-  overflow: hidden;
-  display: inline-block;
-}
-
-a {
+a.normal {
+  color: rgb(114, 147, 245);
   text-decoration: none;
 }
 
-a:hover {
-
+button.delete {
+  background-image: url(delete.png);
 }
 
-a:visited {
-  color: blue;
+button.undo {
+  background-image: url(undo.png);
 }
